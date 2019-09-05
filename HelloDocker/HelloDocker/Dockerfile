@@ -9,8 +9,9 @@ FROM microsoft/dotnet:2.1-sdk-nanoserver-1803 AS build
 WORKDIR /src
 COPY ["./HelloDocker.csproj", "HelloDocker/"]
 RUN dotnet restore "HelloDocker/HelloDocker.csproj"
-COPY . .
+COPY . "HelloDocker/"
 WORKDIR "/src/HelloDocker"
+RUN dir
 RUN dotnet build "HelloDocker.csproj" -c Release -o /app
 
 FROM build AS publish
