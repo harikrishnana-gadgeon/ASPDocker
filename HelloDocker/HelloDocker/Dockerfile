@@ -8,7 +8,7 @@ EXPOSE 80
 FROM microsoft/dotnet:2.1-sdk-nanoserver-1803 AS build
 WORKDIR /src
 COPY ["./HelloDocker.csproj", "./"]
-RUN dotnet restore "HelloDocker/HelloDocker.csproj"
+RUN dotnet restore "./HelloDocker.csproj"
 COPY . .
 WORKDIR "/src/HelloDocker"
 RUN dotnet build "HelloDocker.csproj" -c Release -o /app
